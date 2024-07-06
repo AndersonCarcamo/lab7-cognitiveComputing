@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 7</title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card h2 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .card p {
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Detalles del producto</h1>
+    <div class="container">
+        {% for product in products %}
+        <div class="card">
+            <img src="{{ product['image'] }}" alt="{{ product['title'] }}">
+            <h2>{{ product['title'] }}</h2>
+            <p><strong>Precio:</strong> ${{ product['price'] }}</p>
+	    <p><strong>Categoria:</strong> ${{ product['category'] }}</p>
+            <p><strong>Rating:</strong> {{ product['rating']['rate'] }} ({{ product['rating']['count'] }} reviews)</p>
+            <p>{{ product['description'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
